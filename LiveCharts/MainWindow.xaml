@@ -1,0 +1,75 @@
+﻿<Window x:Class="LiveCharts.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LiveCharts"
+        xmlns:lv="clr-namespace:LiveChartsCore.SkiaSharpView.WPF;assembly=LiveChartsCore.SkiaSharpView.WPF"
+        xmlns:d3="clr-namespace:InteractiveDataDisplay.WPF;assembly=InteractiveDataDisplay.WPF"
+        xmlns:oxy="http://oxyplot.org/wpf"
+        xmlns:oxyPlot="clr-namespace:OxyPlot;assembly=OxyPlot"
+        xmlns:dxh="http://schemas.devexpress.com/winfx/2008/xaml/heatmap"
+        xmlns:dxc="http://schemas.devexpress.com/winfx/2008/xaml/charts"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Window.DataContext>
+        <local:MainWindowViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <!--<lv:CartesianChart Series="{Binding MultiDynamicLine}" ZoomMode="Both" EasingFunction="{x:Null}"/>-->
+
+        <lv:CartesianChart Series="{Binding Intensities, Converter={local:MatrixToSeries}}" EasingFunction="{x:Null}"/>
+
+        <!--<WpfPlot x:Name="Chart"/>-->
+
+        <!--<d3:Chart>
+            <Grid x:Name="Canvas"/>
+        </d3:Chart>-->
+
+        <!--<d3:Chart IsHorizontalNavigationEnabled="False" IsVerticalNavigationEnabled="False">
+            <d3:HeatmapGraph x:Name="HeatMap" Palette="Blue,Red" />
+        </d3:Chart>-->
+
+        <!--<oxy:PlotView x:Name="Plot"/>-->
+
+        <!--<oxy:PlotView x:Name="Plot" IsMouseWheelEnabled="False"/>-->
+
+        <!--<dxc:ChartControl>
+            <dxc:XYDiagram2D SeriesItemsSource="{Binding MultiDynamicLine}" EnableAxisXNavigation="True" EnableAxisYNavigation="True">
+                <dxc:XYDiagram2D.SeriesItemTemplate>
+                    <DataTemplate>
+                        <dxc:LineSeries2D DataSource="{Binding Values}" ArgumentDataMember="X" ValueDataMember="Y" />
+                    </DataTemplate>
+                </dxc:XYDiagram2D.SeriesItemTemplate>
+                <dxc:XYDiagram2D.AxisX>
+                    <dxc:AxisX2D StickToEdge="True"/>
+                </dxc:XYDiagram2D.AxisX>
+                <dxc:XYDiagram2D.DefaultPane>
+                    <dxc:Pane>
+                        <dxc:Pane.AxisXScrollBarOptions>
+                            <dxc:ScrollBarOptions Visible="False"/>
+                        </dxc:Pane.AxisXScrollBarOptions>
+                        <dxc:Pane.AxisYScrollBarOptions>
+                            <dxc:ScrollBarOptions Visible="False"/>
+                        </dxc:Pane.AxisYScrollBarOptions>
+                    </dxc:Pane>
+                </dxc:XYDiagram2D.DefaultPane>
+            </dxc:XYDiagram2D>
+        </dxc:ChartControl>-->
+
+        <!--<dxh:HeatmapControl>
+            <dxh:HeatmapMatrixAdapter Values="{Binding Intensities}" 
+                                      XArguments="{Binding Arguments}" 
+                                      YArguments="{Binding Arguments}"/>
+            <dxh:HeatmapControl.ColorProvider>
+                <dxh:HeatmapRangeColorProvider>
+                    <dxh:HeatmapRangeColorProvider.RangeStops>
+                        <dxh:HeatmapRangeStop Value="0" Type="Percentage"/>
+                        <dxh:HeatmapRangeStop Value="0.5" Type="Percentage"/>
+                        <dxh:HeatmapRangeStop Value="1" Type="Percentage"/>
+                    </dxh:HeatmapRangeColorProvider.RangeStops>
+                </dxh:HeatmapRangeColorProvider>
+            </dxh:HeatmapControl.ColorProvider>
+        </dxh:HeatmapControl>-->
+    </Grid>
+</Window>
